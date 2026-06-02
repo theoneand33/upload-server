@@ -25,7 +25,7 @@ echo "Downloading official icon..."
 curl -L "https://raw.githubusercontent.com/arduino/arduino-ide/main/electron/build/resources/512x512.png" --output "$ICON_DIR/arduino.png"
 
 echo "Creating desktop shortcut..."
-cat <<EOF > "usr/share/applications/arduino.desktop"
+sudo cat <<EOF > "usr/share/applications/arduino.desktop"
 [Desktop Entry]
 Type=Application
 Name=Arduino IDE
@@ -37,6 +37,6 @@ Comment=Arduino IDE 2.x Application
 EOF
 
 echo "Update desktop database..."
-update-desktop-database "usr/share/applications" || true
+sudo update-desktop-database "usr/share/applications" || true
 
 echo "Installation complete! You can now find Arduino IDE in your application menu."
