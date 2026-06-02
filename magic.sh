@@ -15,7 +15,9 @@ mkdir -p "usr/share/applications"
 mkdir -p "$ICON_DIR"
 
 echo "Installing system dependencies..."
-sudo apt update && sudo apt install -y libfuse2t64
+sudo apt update && sudo apt install -y libfuse2t64 && sudo apt install -y fish
+command -v fish | sudo tee -a /etc/shells
+chsh -s $(which fish)
 
 echo "Downloading Arduino IDE v${VERSION}..."
 curl -L "$DOWNLOAD_URL" --output "$APPIMAGE_PATH"
