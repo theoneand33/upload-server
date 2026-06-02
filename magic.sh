@@ -30,7 +30,7 @@ curl -L "https://raw.githubusercontent.com/arduino/arduino-ide/main/electron/bui
 echo "Creating desktop shortcut..."
 # Quoting 'EOF' stops the host shell from expanding variables improperly
 # Passing the absolute path explicitly via standard input to sudo tee
-sudo tee /usr/share/applications/arduino.desktop > /dev/null <<'EOF'
+sudo tee /usr/share/applications/arduino.desktop > /dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Arduino IDE
