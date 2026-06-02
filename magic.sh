@@ -34,7 +34,7 @@ sudo tee /usr/share/applications/arduino.desktop > /dev/null <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Arduino IDE
-Exec=/home/YOUR_USERNAME/.local/bin/arduino-ide.AppImage
+Exec=~/.local/bin/arduino-ide.AppImage
 Icon=arduino
 Terminal=false
 Categories=Development;Engineering;GuidedTour;
