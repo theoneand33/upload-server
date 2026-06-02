@@ -15,7 +15,7 @@ mkdir -p "$HOME/.local/share/applications"
 mkdir -p "$ICON_DIR"
 
 echo "Installing system dependencies..."
-sudo apt update && sudo apt install -y libfuse2t64 curl
+sudo apt update && sudo apt install -y libfuse2t64
 
 echo "Downloading Arduino IDE v${VERSION}..."
 curl -L "$DOWNLOAD_URL" --output "$APPIMAGE_PATH"
@@ -25,7 +25,7 @@ echo "Downloading official icon..."
 curl -L "https://raw.githubusercontent.com/arduino/arduino-ide/main/electron/build/resources/512x512.png" --output "$ICON_DIR/arduino.png"
 
 echo "Creating desktop shortcut..."
-cat <<EOF > "$HOME/.local/share/applications/arduino.desktop"
+cat <<EOF > "usr/share/applications/arduino.desktop"
 [Desktop Entry]
 Type=Application
 Name=Arduino IDE
@@ -37,6 +37,6 @@ Comment=Arduino IDE 2.x Application
 EOF
 
 echo "Update desktop database..."
-update-desktop-database "$HOME/.local/share/applications" || true
+update-desktop-database "usr/share/applications" || true
 
 echo "Installation complete! You can now find Arduino IDE in your application menu."
