@@ -11,12 +11,12 @@ ICON_DIR="$HOME/.local/share/icons/hicolor/512x512/apps"
 
 echo "Creating directories..."
 mkdir -p "$INSTALL_DIR"
-mkdir -p "/usr/share/applications"
+sudo mkdir -p "/usr/share/applications"
 mkdir -p "$ICON_DIR"
 
 echo "Installing system dependencies..."
 sudo apt update && sudo apt install -y libfuse2t64 && sudo apt install -y fish
-command -v fish | sudo tee -a /etc/shells
+sudo command -v fish | sudo tee -a /etc/shells
 sudo echo -e "\n# Automatically launch fish shell\nif [ -t 1 ]; then\n    exec fish\nfi" >> ~/.bashrc
 
 echo "Downloading Arduino IDE v${VERSION}..."
