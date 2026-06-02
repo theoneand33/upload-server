@@ -11,7 +11,7 @@ ICON_DIR="$HOME/.local/share/icons/hicolor/512x512/apps"
 
 echo "Creating directories..."
 mkdir -p "$INSTALL_DIR"
-mkdir -p "$HOME/.local/share/applications"
+mkdir -p "usr/share/applications"
 mkdir -p "$ICON_DIR"
 
 echo "Installing system dependencies..."
