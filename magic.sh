@@ -27,6 +27,7 @@ echo "Downloading official icon..."
 curl -L "https://raw.githubusercontent.com/arduino/arduino-ide/main/electron/build/resources/512x512.png" --output "$ICON_DIR/arduino.png"
 
 echo "Creating desktop shortcut..."
+sudo touch "usr/share/applications/arduino.desktop"
 sudo cat <<EOF > "usr/share/applications/arduino.desktop"
 [Desktop Entry]
 Type=Application
