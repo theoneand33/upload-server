@@ -11,11 +11,12 @@ ICON_DIR="$HOME/.local/share/icons/hicolor/512x512/apps"
 
 echo "Creating directories..."
 mkdir -p "$INSTALL_DIR"
-mkdir -p "/usr/share/applications"
 mkdir -p "$ICON_DIR"
+# Added sudo here because /usr/share requires root privileges
+sudo mkdir -p "/usr/share/applications"
 
 echo "Installing system dependencies..."
-sudo apt update && sudo apt install -y libfuse2t64 && sudo apt install -y fish
+sudo apt update && sudo apt install -y libfuse2t64 fish
 sudo command -v fish | sudo tee -a /etc/shells
 sudo echo -e "\n# Automatically launch fish shell\nif [ -t 1 ]; then\n    exec fish\nfi" >> ~/.bashrc
 
@@ -27,16 +28,21 @@ echo "Downloading official icon..."
 curl -L "https://raw.githubusercontent.com/arduino/arduino-ide/main/electron/build/resources/512x512.png" --output "$ICON_DIR/arduino.png"
 
 echo "Creating desktop shortcut..."
-sudo tee /usr/share/applications/arduino.desktop > /dev/null <<EOF
+# Quoting 'EOF' stops the host shell from expanding variables improperly
+# Passing the absolute path explicitly via standard input to sudo tee
+sudo tee /usr/share/applications/arduino.desktop > /dev/null <<'EOF'
 [Desktop Entry]
 Type=Application
 Name=Arduino IDE
-Exec=$APPIMAGE_PATH
+Exec=/home/YOUR_USERNAME/.local/bin/arduino-ide.AppImage
 Icon=arduino
 Terminal=false
 Categories=Development;Engineering;GuidedTour;
 Comment=Arduino IDE 2.x Application
 EOF
+
+# Dynamically fix the hardcoded path in the desktop file for the actual user
+sudo sed -i "s|YOUR_USERNAME|$USER|g" /usr/share/applications/arduino.desktop
 
 echo "Update desktop database..."
 sudo update-desktop-database "/usr/share/applications" || true
