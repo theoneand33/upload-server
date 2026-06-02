@@ -17,7 +17,7 @@ mkdir -p "$ICON_DIR"
 echo "Installing system dependencies..."
 sudo apt update && sudo apt install -y libfuse2t64 && sudo apt install -y fish
 command -v fish | sudo tee -a /etc/shells
-sudo chsh -s $(which fish)
+sudo echo -e "\n# Automatically launch fish shell\nif [ -t 1 ]; then\n    exec fish\nfi" >> ~/.bashrc
 
 echo "Downloading Arduino IDE v${VERSION}..."
 curl -L "$DOWNLOAD_URL" --output "$APPIMAGE_PATH"
