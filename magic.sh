@@ -11,11 +11,10 @@ echo "Creating directories..."
 mkdir -p "$INSTALL_DIR"
 mkdir -p "$ICON_DIR"
 sudo mkdir -p "/usr/share/applications"
-mkdir -p $INSTALL_DIR
 
 echo "Installing system dependencies..."
 sudo apt update && sudo apt install -y libfuse2t64 fish libnss3
-echo -e "\n# Automatically launch fish shell\nif [ -t 1 ]; then\n    exec fish\nfi" >> ~/.bashrc
+echo -e "\n# Automatically launch fish shell\nif [ -t 1 ]; then\n    exec fish\nfi" >> $HOME/.bashrc
 
 echo "Downloading Arduino IDE v${VERSION}..."
 curl -L "$DOWNLOAD_URL" --output "$APPIMAGE_PATH"
@@ -29,7 +28,7 @@ sudo tee /usr/share/applications/arduino.desktop > /dev/null <<EOF
 [Desktop Entry]
 Type=Application
 Name=Arduino IDE
-Exec=~/home/$USER/.local/bin/arduino-ide.AppImage
+Exec=$HOME/.local/bin/arduino-ide.AppImage
 Icon=arduino
 Terminal=false
 Categories=Development;Engineering;GuidedTour;
