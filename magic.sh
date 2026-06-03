@@ -25,7 +25,7 @@ curl -L "$DOWNLOAD_URL" --output "$APPIMAGE_PATH"
 chmod +x "$APPIMAGE_PATH"
 
 echo "Downloading official icon..."
-curl -L "https://raw.githubusercontent.com/arduino/arduino-ide/main/electron/build/resources/512x512.png" --output "$ICON_DIR/arduino.png"
+curl -L "https://github.com/arduino/arduino-ide/blob/main/electron-app/resources/icons/512x512.png?raw=true" --output "$ICON_DIR/arduino.png"
 
 echo "Creating desktop shortcut..."
 # Quoting 'EOF' stops the host shell from expanding variables improperly
