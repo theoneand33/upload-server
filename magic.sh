@@ -16,7 +16,7 @@ mkdir -p "$ICON_DIR"
 sudo mkdir -p "/usr/share/applications"
 
 echo "Installing system dependencies..."
-sudo apt update && sudo apt install -y libfuse2t64 fish
+sudo apt update && sudo apt install -y libfuse2t64 fish libnss3
 sudo command -v fish | sudo tee -a /etc/shells
 sudo echo -e "\n# Automatically launch fish shell\nif [ -t 1 ]; then\n    exec fish\nfi" >> ~/.bashrc
 
@@ -40,9 +40,6 @@ Terminal=false
 Categories=Development;Engineering;GuidedTour;
 Comment=Arduino IDE 2.x Application
 EOF
-
-# Dynamically fix the hardcoded path in the desktop file for the actual user
-sudo sed -i "s|YOUR_USERNAME|$USER|g" /usr/share/applications/arduino.desktop
 
 echo "Update desktop database..."
 sudo update-desktop-database "/usr/share/applications" || true
