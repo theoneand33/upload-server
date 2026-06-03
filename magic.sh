@@ -32,7 +32,7 @@ sudo tee /usr/share/applications/arduino.desktop > /dev/null <<EOF
 Type=Application
 Name=Arduino IDE
 Exec=$INSTALL_DIR/arduino-ide.AppImage
-Icon=arduino
+Icon=$ICON_DIR/arduino.png
 Terminal=false
 Categories=Development;Engineering;GuidedTour;
 Comment=Arduino IDE 2.x Application
