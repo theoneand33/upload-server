@@ -1,8 +1,6 @@
 #!/bin/bash
-# Exit immediately if a command exits with a non-zero status
 set -e
 
-# Configuration
 VERSION="2.3.9"
 DOWNLOAD_URL="https://downloads.arduino.cc/arduino-ide/arduino-ide_${VERSION}_Linux_64bit.AppImage"
 INSTALL_DIR="$HOME/.local/bin"
@@ -12,7 +10,6 @@ ICON_DIR="$HOME/.local/share/icons/hicolor/512x512/apps"
 echo "Creating directories..."
 mkdir -p "$INSTALL_DIR"
 mkdir -p "$ICON_DIR"
-# Added sudo here because /usr/share requires root privileges
 sudo mkdir -p "/usr/share/applications"
 
 echo "Installing system dependencies..."
@@ -28,8 +25,6 @@ echo "Downloading official icon..."
 curl -L "https://github.com/arduino/arduino-ide/blob/main/electron-app/resources/icons/512x512.png?raw=true" --output "$ICON_DIR/arduino.png"
 
 echo "Creating desktop shortcut..."
-# Quoting 'EOF' stops the host shell from expanding variables improperly
-# Passing the absolute path explicitly via standard input to sudo tee
 sudo tee /usr/share/applications/arduino.desktop > /dev/null <<EOF
 [Desktop Entry]
 Type=Application
