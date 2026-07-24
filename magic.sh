@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-VERSION="2.3.9"
+VERSION="2.3.10"
 DOWNLOAD_URL="https://downloads.arduino.cc/arduino-ide/arduino-ide_${VERSION}_Linux_64bit.AppImage"
 INSTALL_DIR="$HOME/.local/bin"
 APPIMAGE_PATH="$INSTALL_DIR/arduino-ide.AppImage"
